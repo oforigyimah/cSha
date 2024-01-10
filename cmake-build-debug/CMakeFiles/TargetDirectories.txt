@@ -1,0 +1,3 @@
+/home/f0rio2/CLionProjects/cSha/cmake-build-debug/CMakeFiles/cSha.dir
+/home/f0rio2/CLionProjects/cSha/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/f0rio2/CLionProjects/cSha/cmake-build-debug/CMakeFiles/rebuild_cache.dir

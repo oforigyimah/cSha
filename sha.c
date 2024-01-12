@@ -9,6 +9,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "constants.h"
+#include "cSha.h"
 
 int derive_k(uint64_t l);
 uint32_t right_rotate(uint32_t x, int n) { return (x >> n) | (x << (32-n)); }
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 
 
 	/* Variables */
-	char *raw_message, *default_message = "abc";
+	char *raw_message, *default_message = "abcd";
 	int chunks, i, j, m, n, k;
 	uint64_t l, message_length;
 	uint32_t temp1, temp2;
@@ -33,6 +34,7 @@ int main(int argc, char *argv[])
     uint32_t hash[8];
 
 	raw_message = (argc == 1) ? default_message : argv[1];
+    printf("raw_message = %d\n",CONVERT_TO_INT(raw_message));
 
 	/* Pre-processing */
 	l = strlen(raw_message) * sizeof(char) * 8;  /* Assuming ASCII encoding */
@@ -54,6 +56,7 @@ int main(int argc, char *argv[])
 	while(raw_message[n] != '\0')
 	{
 		bit_array[i][j] |= raw_message[n] << m * 8;
+        printf("bit array at i and j %u\n", bit_array[i][j]  );
 
 		if(m > 0) m--;
 		else
@@ -73,21 +76,29 @@ int main(int argc, char *argv[])
 
 	/* Append '1'-bit */
 	bit_array[i][j] |= 0x80 << m * 8;
-
-	/* Append length as 64-bit big endian value */
-	bit_array[chunks-1][14] = (uint32_t)(l >> 32);
-	bit_array[chunks-1][15] = (uint32_t)(l & 0xffffffff);
+    printf("m = %d\n", m);
+    /* Append length as 64-bit big endian value */
+    bit_array[chunks-1][14] = (uint32_t)(l >> 32);
+    bit_array[chunks-1][15] = (uint32_t)(l & 0xffffffff);
+    int z = 0;
+    for(z = 0; z < 16; z++)
+        printf("z bits bit array at i and j %u\n", bit_array[i][z] );
 
 	/* Process message */
 	for(j=0; j<chunks; j++)
 	{
-		for(i=0; i<16; i++)
-			w[i] = bit_array[j][i];
+		for(i=0; i<16; i++) {
+            w[i] = bit_array[j][i];
+            printf("w[i=%d] = %u\n", i, w[i]);
+        }
 
-		for(i=16; i<64; i++)
-			w[i] = w[i-16] + s0(w[i-15]) + w[i-7] + s1(w[i-2]);
+		for(i=16; i<64; i++) {
+            w[i] = w[i - 16] + s0(w[i - 15]) + w[i - 7] + s1(w[i - 2]);
+            printf("w[i=%d] = %u\n", i, w[i]);
+        }
 
-		a = H[0];
+
+        a = H[0];
 		b = H[1];
 		c = H[2];
 		d = H[3];
@@ -135,6 +146,7 @@ int main(int argc, char *argv[])
 		printf("%08x", hash[i]);
 
 	printf("\n");
+    printf("sizeof(uint32_t) = %lu\n", sizeof(uint32_t));
 
 	return 0;
 }

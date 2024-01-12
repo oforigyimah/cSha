@@ -5,4 +5,5 @@
 #ifndef CSHA_GET_MT_H
 #define CSHA_GET_MT_H
 
+int getMt(int t);
 #endif //CSHA_GET_MT_H

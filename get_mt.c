@@ -3,3 +3,14 @@
 //
 
 #include "get_mt.h"
+#include "cSha.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+
+int getMt(int t) {
+
+}

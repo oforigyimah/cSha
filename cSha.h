@@ -19,6 +19,15 @@
 #define CH(x, y, z) ((x & y) ^ (~x & z))
 #define MAJ(x, y, z) ((x & y) ^ (x & z) ^ (y & z))
 
+typedef struct  {
+    unsigned int a;
+    unsigned int b;
+    unsigned int c;
+    unsigned int d;
+} bytes_block; ;
+
+#define CONVERT_TO_INT(data) ((data[0] << 24) | (data[1] << 16) | (data[2] << 8) | (data[3]))
+
 void sort_file(const char *filename);
 void set(char *arr[], int size, int* uniqueCount);
 

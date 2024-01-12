@@ -73,6 +73,18 @@ build CMakeFiles/cSha.dir/set.c.o: C_COMPILER__cSha_unscanned_Debug /home/f0rio2
   OBJECT_DIR = CMakeFiles/cSha.dir
   OBJECT_FILE_DIR = CMakeFiles/cSha.dir
 
+build CMakeFiles/cSha.dir/get_mt.c.o: C_COMPILER__cSha_unscanned_Debug /home/f0rio2/CLionProjects/cSha/get_mt.c || cmake_object_order_depends_target_cSha
+  DEP_FILE = CMakeFiles/cSha.dir/get_mt.c.o.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cSha.dir
+  OBJECT_FILE_DIR = CMakeFiles/cSha.dir
+
+build CMakeFiles/cSha.dir/sha.c.o: C_COMPILER__cSha_unscanned_Debug /home/f0rio2/CLionProjects/cSha/sha.c || cmake_object_order_depends_target_cSha
+  DEP_FILE = CMakeFiles/cSha.dir/sha.c.o.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cSha.dir
+  OBJECT_FILE_DIR = CMakeFiles/cSha.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cSha
@@ -81,7 +93,7 @@ build CMakeFiles/cSha.dir/set.c.o: C_COMPILER__cSha_unscanned_Debug /home/f0rio2
 #############################################
 # Link the executable cSha
 
-build cSha: C_EXECUTABLE_LINKER__cSha_Debug CMakeFiles/cSha.dir/main.c.o CMakeFiles/cSha.dir/constants.c.o CMakeFiles/cSha.dir/sortFile.c.o CMakeFiles/cSha.dir/set.c.o
+build cSha: C_EXECUTABLE_LINKER__cSha_Debug CMakeFiles/cSha.dir/main.c.o CMakeFiles/cSha.dir/constants.c.o CMakeFiles/cSha.dir/sortFile.c.o CMakeFiles/cSha.dir/set.c.o CMakeFiles/cSha.dir/get_mt.c.o CMakeFiles/cSha.dir/sha.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/cSha.dir
   POST_BUILD = :

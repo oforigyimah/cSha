@@ -8,4 +8,8 @@ add_executable(cSha main.c
         constants.c
         constants.h
         sortFile.c
-        set.c)
+        set.c
+        get_mt.c
+        get_mt.h
+        sha.c
+)
